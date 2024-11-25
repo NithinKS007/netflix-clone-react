@@ -1,8 +1,11 @@
-const App = () =>{
+import Home from "./pages/Home/Home";
 
+const App = () => {
   return (
-    <h1>React App</h1>
-  )
-}
+    <div className="bg-black min-h-screen text-white">
+      <Home />
+    </div>
+  );
+};
 
-export default App
+export default App;
