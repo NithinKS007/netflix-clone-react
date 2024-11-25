@@ -34,12 +34,14 @@ const Banner = () => {
               <img className="w-6" src={info_icon} alt="Info icon" /> More Info
             </button>
           </div>
-          <TitleCards/>
+          <TitleCards />
         </div>
       </div>
-      <TitleCards title={"Blockbuster Movies"}/>
-      <TitleCards title={"Only on netflix"}/>
-      <TitleCards title={"Top Pics for you"}/>
+      <div className=" pl-6 bottom-0">
+        <TitleCards title={"Blockbuster Movies"} />
+        <TitleCards title={"Only on netflix"} />
+        <TitleCards title={"Top Pics for you"} />
+      </div>
     </div>
   );
 };

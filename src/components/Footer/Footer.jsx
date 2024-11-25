@@ -7,7 +7,7 @@ import facebook_icon from "../../assets/others/facebook_icon.png";
 const Footer = () => {
   return (
     <div className="flex flex-col items-center p-6 bg-black text-gray-400">
-      <div className="flex  space-x-4 mb-6 justify-start ">
+      <div className="flex space-x-4 mb-6">
         <img src={facebook_icon} alt="Facebook" className="w-6 h-6 " />
         <img src={instagram_icon} alt="Instagram" className="w-6 h-6" />
         <img src={twitter_icon} alt="Twitter" className="w-6 h-6" />

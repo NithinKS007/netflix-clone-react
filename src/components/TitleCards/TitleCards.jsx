@@ -14,7 +14,7 @@ const TitleCards = ({title,category}) => {
     cardRef.current.addEventListener("wheel", handleWheel);
   }, []);
   return (
-    <div className="mt-12 mb-7">
+    <div className="mt-12 mb-7 ">
       <h2 className="mb-2">{title ? title :"Popular on Netflix"}</h2>
       <div className="flex gap-3 overflow-hidden" ref={cardRef}>
         {cards_data.map((card, index) => {
