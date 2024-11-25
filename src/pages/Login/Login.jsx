@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/others/logo.png";
+import logo from "../../assets/logo.png";
 
 const Login = () => {
   const [signState, setSignState] = useState("Sign In");
