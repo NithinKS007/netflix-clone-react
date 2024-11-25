@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import logo from "../../assets/others/logo.png";
 import search_icon from "../../assets/others/search_icon.svg";
 import bell_icon from "../../assets/others/bell_icon.svg";
@@ -6,8 +6,31 @@ import profile_img from "../../assets/others/profile_img.png";
 import caret_icon from "../../assets/others/caret_icon.svg";
 
 const NavBar = () => {
+  const [scrolling, setScrolling] = useState(false);
+  const navRef = useRef();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 80) {
+        setScrolling(true); // User has scrolled down past 80px
+      } else {
+        setScrolling(false); // User is at the top of the page
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="w-full px-6 py-5 flex justify-between fixed text-sm text-gray-300  z-10">
+    <div
+      ref={navRef}
+      className={`w-full px-6 py-5 flex justify-between fixed text-sm text-gray-300 z-10 ${
+        scrolling ? "bg-black bg-opacity-95" : "bg-transparent"
+      } transition-all duration-300`} 
+    >
       <div className="flex items-center space-x-12">
         <img className="w-24" src={logo} alt="Logo" />
         <ul className="flex space-x-8 cursor-pointer list-none">
@@ -29,8 +52,8 @@ const NavBar = () => {
             src={profile_img}
             alt=""
           />
-          <div className="w-36 absolute hidden mt-5 group-hover:block cursor-pointer ">
-       Sign out
+          <div className="w-36 absolute hidden mt-5 group-hover:block cursor-pointer">
+            Sign out
           </div>
         </div>
         <img className="cursor-pointer" src={caret_icon} alt="" />
