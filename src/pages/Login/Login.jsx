@@ -1,10 +1,27 @@
 import React, { useState } from "react";
 import logo from "../../assets/logo.png";
+import { login, signUp } from "../../fireBase/fireBase";
+
 
 const Login = () => {
   const [signState, setSignState] = useState("Sign In");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading,setLoading] = useState(false)
 
+  const userAuth = async (event) => {
+    event.preventDefault();
+    setLoading(true)
+    if (signState === "Sign In") {
+      await login(email, password);
+    } else {
+      await signUp(name, email, password);
+    }
+    setLoading(false)
+  };
   return (
+    loading ? <p>Loading...</p> :
     <div
       className="h-screen px-8 py-2"
       style={{
@@ -23,6 +40,10 @@ const Login = () => {
           {signState === "Sign Up" ? (
             <input
               type="text"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
               placeholder="Your Name"
               className="w-full h-12 bg-gray-800 text-white my-3 border-0 outline-0 rounded-md px-4 py-3 text-sm"
             />
@@ -32,15 +53,27 @@ const Login = () => {
 
           <input
             type="email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
             placeholder="Your Email"
             className="w-full h-12 bg-gray-800 text-white my-3 border-0 outline-0 rounded-md px-4 py-3 text-sm"
           />
           <input
             type="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value)
+            }}
             placeholder="Your Password"
             className="w-full h-12 bg-gray-800 text-white my-3 border-0 outline-0 rounded-md px-4 py-3 text-sm"
           />
-          <button className="w-full h-12 bg-red-600 text-white my-3 border-0 outline-0 rounded-md px-4 py-3 text-sm cursor-pointer">
+          <button
+            onClick={userAuth}
+            type="submit"
+            className="w-full h-12 bg-red-600 text-white my-3 border-0 outline-0 rounded-md px-4 py-3 text-sm cursor-pointer"
+          >
             {signState}
           </button>
 

@@ -41,7 +41,7 @@ const Banner = () => {
         <TitleCards title={"Top Rated"} category={"top_rated"} />
         <TitleCards title={"Popular"} category={"popular"} />
         <TitleCards title={"Upcoming"} category={"upcoming"} />
-        <TitleCards title={"Now_playing"} category={"now_playing"} />
+        <TitleCards title={"Now Playing"} category={"now_playing"} />
       </div>
     </div>
   );

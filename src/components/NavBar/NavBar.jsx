@@ -4,6 +4,7 @@ import search_icon from "../../assets/search_icon.svg";
 import bell_icon from "../../assets/bell_icon.svg";
 import profile_img from "../../assets/profile_img.png";
 import caret_icon from "../../assets/caret_icon.svg";
+import { logout } from "../../fireBase/fireBase";
 
 const NavBar = () => {
   const [scrolling, setScrolling] = useState(false);
@@ -12,9 +13,9 @@ const NavBar = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY >= 80) {
-        setScrolling(true); // User has scrolled down past 80px
+        setScrolling(true); 
       } else {
-        setScrolling(false); // User is at the top of the page
+        setScrolling(false); 
       }
     };
 
@@ -52,8 +53,8 @@ const NavBar = () => {
             src={profile_img}
             alt=""
           />
-          <div className="w-36 absolute hidden mt-5 group-hover:block cursor-pointer">
-            Sign out
+          <div className="w-36 absolute hidden  group-hover:block cursor-pointer">
+            <p onClick={()=>{logout()}}> Sign out</p>
           </div>
         </div>
         <img className="cursor-pointer" src={caret_icon} alt="" />
