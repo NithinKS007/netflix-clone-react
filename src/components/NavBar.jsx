@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import logo from "../../assets/logo.png";
-import search_icon from "../../assets/search_icon.svg";
-import bell_icon from "../../assets/bell_icon.svg";
-import profile_img from "../../assets/profile_img.png";
-import caret_icon from "../../assets/caret_icon.svg";
-import { logout } from "../../fireBase/fireBase";
+import logo from "../assets/logo.png";
+import search_icon from "../assets/search_icon.svg";
+import bell_icon from "../assets/bell_icon.svg";
+import profile_img from "../assets/profile_img.png";
+import caret_icon from "../assets/caret_icon.svg";
+import { logout } from "../fireBase/fireBaseUtils";
 
 const NavBar = () => {
   const [scrolling, setScrolling] = useState(false);

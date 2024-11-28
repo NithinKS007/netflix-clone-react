@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import logo from "../../assets/logo.png";
-import { login, signUp } from "../../fireBase/fireBase";
-
+import logo from "../assets/logo.png";
+import { login, signUp} from "../fireBase/fireBaseUtils";
 
 const Login = () => {
   const [signState, setSignState] = useState("Sign In");
@@ -34,8 +33,8 @@ const Login = () => {
       }}
     >
       <img src={logo} className="w-36" alt="" />
-      <div class="w-full max-w-md bg-black bg-opacity-75 rounded p-8 m-auto">
-        <h1 class="text-3xl font-medium mb-7">{signState}</h1>
+      <div className="w-full max-w-md bg-black bg-opacity-75 rounded p-8 m-auto">
+        <h1 className="text-3xl font-medium mb-7">{signState}</h1>
         <form>
           {signState === "Sign Up" ? (
             <input
