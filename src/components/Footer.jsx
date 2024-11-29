@@ -7,13 +7,14 @@ import facebook_icon from "../assets/facebook_icon.png";
 const Footer = () => {
   return (
     <div className="flex flex-col items-center p-6 bg-black text-gray-400">
+      <div className="flex flex-col items-start justify-center">
       <div className="flex space-x-4 mb-6">
-        <img src={facebook_icon} alt="Facebook" className="w-6 h-6 " />
+        <img src={facebook_icon} alt="Facebook" className="w-6 h-6" />
         <img src={instagram_icon} alt="Instagram" className="w-6 h-6" />
         <img src={twitter_icon} alt="Twitter" className="w-6 h-6" />
         <img src={youtube_icon} alt="YouTube" className="w-6 h-6" />
       </div>
-      <ul className="grid gap-4 text-sm text-center  grid-cols-4">
+      <ul className="grid gap-4 text-sm text-left grid-cols-4 mb-6">
         <li>Audio Description</li>
         <li>Help Centre</li>
         <li>Gift Cards</li>
@@ -27,8 +28,10 @@ const Footer = () => {
         <li>Corporate Information</li>
         <li>Contact Us</li>
       </ul>
-      <p className="mt-6 text-xs">&#169; 1997-2023 Netflix, Inc.</p>
+      <p className="mt-6 text-xs text-left">&#169; 1997-2023 Netflix, Inc.</p>
     </div>
+      </div>
+      
   );
 };
 

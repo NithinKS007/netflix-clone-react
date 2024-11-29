@@ -6,7 +6,6 @@ import { playerTrailerLink } from "../utils/constants";
 
 const Player = () => {
   const { id } = useParams();
-  
   const navigate = useNavigate();
 
   const [apiData, setApiData] = useState({

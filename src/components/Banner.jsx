@@ -1,35 +1,42 @@
+import React from "react";
 import hero_banner from "../assets/hero_banner.jpg";
 import hero_title from "../assets/hero_title.png";
 import TitleCards from "./TitleCards";
 import PlayButtonGroup from "./PlayerButtonGroup";
-import React from "react";
 
 const Banner = () => {
   return (
-    <div>
-      <div className="relative ">
+    <div className="w-full">
+      <div className="relative w-full overflow-hidden">
         <img
           src={hero_banner}
+          className="w-full h-[75vh] sm:h-[80vh] md:h-[80vh] object-cover"
           style={{
-            maskImage: "linear-gradient(to right, transparent, black 75%)",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent, black 75%)",
-            width: "100%",
+            maskImage: "linear-gradient(to right, transparent 0%, black 100%)",
+            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 100%)"
           }}
-          alt=""
+          alt="Hero Banner"
         />
-        <div className="absolute w-full pl-6 bottom-0">
-          <img src={hero_title} alt="" className="w-9/12 max-w-[420px] mb-8" />
-          <p className="max-w-[700px] text-sm mb-5">
-            Discovering his ties to a secret ancient order, a young man living
-            in modern Istanbul embarks on a quest to save the city from an
-            immortal army.
-          </p>
-          <PlayButtonGroup />
-          <TitleCards />
+        <div className="absolute bottom-0 left-0 w-full p-4 sm:p-6 lg:p-8 text-white bg-gradient-to-r">
+          <div className="max-w-xl">
+            <img 
+              src={hero_title} 
+              alt="Title" 
+              className="w-full max-w-md mb-2 sm:mb-4"
+            />
+            <p className="text-xs sm:text-sm md:text-base mb-3 sm:mb-4">
+              Discovering his ties to a secret ancient order, a young man living 
+              in modern Istanbul embarks on a quest to save the city from an 
+              immortal army.
+            </p>
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <PlayButtonGroup />
+            </div>
+          </div>
         </div>
       </div>
-      <div className=" pl-6 bottom-0 ">
+      
+      <div className="px-4 sm:px-6 lg:px-8 mt-4 sm:mt-6 space-y-4 sm:space-y-6">
         <TitleCards title={"Top Rated"} category={"top_rated"} />
         <TitleCards title={"Popular"} category={"popular"} />
         <TitleCards title={"Upcoming"} category={"upcoming"} />

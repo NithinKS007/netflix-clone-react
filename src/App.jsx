@@ -7,11 +7,13 @@ import Player from "./pages/Player";
 
 import AuthContextProvider from "./contexts/AuthContextProvider";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
   return (
-    <AuthContextProvider>
-        <div className="bg-black min-h-screen text-white">
+    <div className="bg-black min-h-screen text-white">
+      <BrowserRouter>
+        <AuthContextProvider>
           <ToastContainer theme="dark" />
           <Routes>
             <Route path="/login" element={<Login />} />
@@ -32,8 +34,9 @@ const App = () => {
               }
             />
           </Routes>
-        </div>
-    </AuthContextProvider>
+        </AuthContextProvider>
+      </BrowserRouter>
+    </div>
   );
 };
 
