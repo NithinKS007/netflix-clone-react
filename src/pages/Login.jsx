@@ -1,26 +1,35 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
-import { login, signUp} from "../fireBase/fireBaseUtils";
+import { login, signUp } from "../fireBase/fireBaseUtils";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [signState, setSignState] = useState("Sign In");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const userAuth = async (event) => {
     event.preventDefault();
-    setLoading(true)
-    if (signState === "Sign In") {
-      await login(email, password);
-    } else {
-      await signUp(name, email, password);
+    setLoading(true);
+    try {
+      if (signState === "Sign In") {
+        await login(email, password);
+      } else {
+        await signUp(name, email, password);
+      }
+      navigate("/");
+    } catch (err) {
+      console.error(err.message);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false)
   };
-  return (
-    loading ? <p>Loading...</p> :
+  return loading ? (
+    <p>Loading...</p>
+  ) : (
     <div
       className="h-screen px-8 py-2"
       style={{
@@ -63,7 +72,7 @@ const Login = () => {
             type="password"
             value={password}
             onChange={(e) => {
-              setPassword(e.target.value)
+              setPassword(e.target.value);
             }}
             placeholder="Your Password"
             className="w-full h-12 bg-gray-800 text-white my-3 border-0 outline-0 rounded-md px-4 py-3 text-sm"

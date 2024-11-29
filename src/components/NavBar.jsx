@@ -1,21 +1,24 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import logo from "../assets/logo.png";
 import search_icon from "../assets/search_icon.svg";
 import bell_icon from "../assets/bell_icon.svg";
 import profile_img from "../assets/profile_img.png";
 import caret_icon from "../assets/caret_icon.svg";
 import { logout } from "../fireBase/fireBaseUtils";
+import { AuthContext } from "../contexts/AuthContextProvider";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
   const [scrolling, setScrolling] = useState(false);
+  const navigate = useNavigate();
   const navRef = useRef();
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY >= 80) {
-        setScrolling(true); 
+        setScrolling(true);
       } else {
-        setScrolling(false); 
+        setScrolling(false);
       }
     };
 
@@ -25,12 +28,18 @@ const NavBar = () => {
     };
   }, []);
 
+  const currentUser = useContext(AuthContext);
+  const handleLogout = async () => {
+    await logout();
+    navigate("/login");
+  };
+
   return (
     <div
       ref={navRef}
       className={`w-full px-6 py-5 flex justify-between fixed text-sm text-gray-300 z-10 ${
         scrolling ? "bg-black bg-opacity-95" : "bg-transparent"
-      } transition-all duration-300`} 
+      } transition-all duration-300`}
     >
       <div className="flex items-center space-x-12">
         <img className="w-24" src={logo} alt="Logo" />
@@ -53,9 +62,11 @@ const NavBar = () => {
             src={profile_img}
             alt=""
           />
-          <div className="w-36 absolute hidden  group-hover:block cursor-pointer">
-            <p onClick={()=>{logout()}}> Sign out</p>
-          </div>
+           {currentUser && (
+            <div className="w-36 absolute hidden group-hover:block cursor-pointer">
+              <p onClick={handleLogout}>Sign out</p>
+            </div>
+          )}
         </div>
         <img className="cursor-pointer" src={caret_icon} alt="" />
       </div>

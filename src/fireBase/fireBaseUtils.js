@@ -38,7 +38,7 @@ const login = async (email, password) => {
     email = String(email);
     password = String(password);
 
-   await signInWithEmailAndPassword(auth, email, password);
+    await signInWithEmailAndPassword(auth, email, password);
 
     toast.success("Login successful!");
   } catch (error) {
