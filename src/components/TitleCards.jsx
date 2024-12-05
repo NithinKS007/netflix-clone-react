@@ -18,7 +18,6 @@ const TitleCards = ({title,category}) => {
       try {
         const response = await instance.get(`/${category ? category : "now_playing"}?language=en-US&page=1`);
         setApiData(response?.data?.results); 
-        console.log("api data received",response?.data?.results);
         
       } catch (err) {
         console.error("Error fetching data:", err);

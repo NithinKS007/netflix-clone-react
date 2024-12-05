@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <div className="flex flex-col items-center p-6 bg-black text-gray-400">
       <div className="flex flex-col items-start justify-center">
-      <div className="flex space-x-4 mb-6">
+      <div className="flex space-x-4 mb-8">
         <img src={facebook_icon} alt="Facebook" className="w-6 h-6" />
         <img src={instagram_icon} alt="Instagram" className="w-6 h-6" />
         <img src={twitter_icon} alt="Twitter" className="w-6 h-6" />
